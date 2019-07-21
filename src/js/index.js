@@ -1,4 +1,4 @@
 // Global app controller
 import x from './test';
-
-console.log(x);
+const c = 22;
+console.log(`${x} ya knoww ${c}`);
