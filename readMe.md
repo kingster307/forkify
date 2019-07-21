@@ -10,3 +10,8 @@
 	* NPM
 	* Automation
 	* advanced css
+	* css grid
+
+Purpose 
+
+The purpose of this project is to get hands on experience pulling from an API using modern esNext syntax as well as using transpiler/polyfill & webpack
