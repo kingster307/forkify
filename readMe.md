@@ -11,7 +11,8 @@
 	* Automation
 	* advanced css
 	* css grid
+	* MVC architectural design
 
-Purpose 
+## Purpose 
 
 The purpose of this project is to get hands on experience pulling from an API using modern esNext syntax as well as using transpiler/polyfill & webpack
