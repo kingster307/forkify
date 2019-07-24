@@ -15,13 +15,14 @@ const controlSeach = async () => {
         state.search = new Search(query);
 
         //prepare UI for results 
-        
+        searchView.clearInput();
+        searchView.clearResults();
 
         //search for recipieces ---> /returns promise 
         await state.search.getResults();
 
         //render results on UI
-        // console.log(state.search.result);
+        searchView.resendResult(state.search.result);
     }
 
 };
