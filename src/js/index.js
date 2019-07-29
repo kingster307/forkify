@@ -4,6 +4,7 @@ import Recipe from './models/Recipes';
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
 import {elements, renderLoader, clearLoader} from "./views/base";
+
 // import { stat } from 'fs';
 
 // global state of the app
@@ -122,9 +123,23 @@ console.log(state.recipe);
 
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
+//handling recipe button clicks 
+elements.recipe.addEventListener('click', e =>{
+
+    if(e.target.matches(".btn-dec, .btn-dec *")){
+        if(state.recipe.servings > 1){
+        //dec btn is clicked 
+        state.recipe.updateServings("dec");
+        recipeView.updateServingsIngr(state.recipe);
+        }
+    }
+    if(e.target.matches(".btn-inc, .btn-inc *")){
+        //inc btn is clicked 
+        state.recipe.updateServings("inc");
+        recipeView.updateServingsIngr(state.recipe);
+    }
+        // console.log(state.recipe);
+});
 
 
 
-// const r = new Recipe(46956);
-// r.getRecipes();
-// console.log(r);
