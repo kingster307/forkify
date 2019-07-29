@@ -10,13 +10,20 @@ export const clearInput = () => {
 
 export const clearResults = () => {
     elements.searchResultList.innerHTML = '';
+<<<<<<< HEAD
     elements.searchResPages.innerHTML = '';
+=======
+>>>>>>> 8675776c157914393649dc9207a31bcab27181e9
 };
 
 const limitRecipeTitle = (title, limit = 17) => {
     const newTitle = [];
     if(title.length > limit){
+<<<<<<< HEAD
         title.split(' ').reduce((acc, cur) => {
+=======
+        title.split(' ').reduce((acc, cur)=>{
+>>>>>>> 8675776c157914393649dc9207a31bcab27181e9
             if(acc + cur.length <= limit){
                 newTitle.push(cur);
             }
@@ -47,6 +54,7 @@ const renderRecipes = recipe => {
 
 };
 
+<<<<<<< HEAD
 const createBtn = (page, type) => `
     <button class="btn-inline results__btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1 }">
         <span>Page ${type === 'prev' ? page - 1 : page + 1 }</span>
@@ -91,4 +99,8 @@ export const resendResult = (recipes, page = 1, resPerPage = 10) => {
     //render pagination buttons 
     renderButtons(page, recipes.length, resPerPage);
 
+=======
+export const resendResult = recipes => {
+    recipes.forEach(renderRecipes);
+>>>>>>> 8675776c157914393649dc9207a31bcab27181e9
 };
