@@ -165,10 +165,7 @@ console.log(state.recipe);
     });
 
 
-    // TESTING
-    if(!state.likes) state.likes = new Likes();
-    likesView.toggleLikeMenu(state.likes.getNumOfLikes());
-
+   
 
 /**
  * Like controller
@@ -214,8 +211,22 @@ const controlLike = () => {
 };
 
 
+// restore likes recipes on page load
+window.addEventListener('load', () => {
+    state.likes = new Likes();
 
+    // restore likes
+    state.likes.readStorage();
 
+    // toggle like menu button
+    likesView.toggleLikeMenu(state.likes.getNumOfLikes());
+
+    // render existing likes
+    state.likes.likes.forEach(like => {
+        likesView.renderLike(like);
+    });
+
+});
 
 
 
