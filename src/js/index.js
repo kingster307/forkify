@@ -4,6 +4,7 @@ import Recipe from './models/Recipes';
 import List from './models/List';
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
+import * as listView from "./views/listView";
 import {elements, renderLoader, clearLoader} from "./views/base";
 
 // import { stat } from 'fs';
@@ -124,6 +125,41 @@ console.log(state.recipe);
 
 ['hashchange', 'load'].forEach(event => window.addEventListener(event, controlRecipe));
 
+
+/**
+ * List controller
+ */
+    const controlList = () => {
+        // create new list if no list is present 
+        if(!state.list) state.list = new List();
+        
+        // add each ingredient to the list && UI
+        state.recipe.ingredients.forEach(el => {
+            const item = state.list.addItem(el.count, el.unit, el.ingredients);
+            listView.renderItem(item);
+        });
+    };
+
+    // handle delete && update list item events 
+    elements.shopping.addEventListener('click', e => {
+        const id = e.target.closest('.shopping__item').dataset.itemid;
+
+        //handle delete event / btn
+        if (e.target.matches('.shopping__delete, .shopping__delete *')){
+            // delete from state
+            state.list.deleteItem(id);
+            //delete from UI
+            listView.deleteItem(id);
+
+            //handle count update 
+        }else if (e.target.matches('.shopping_count-value')){
+            const val = parseFloat(e.target.value, 10);
+            state.list.updateCount(id, val);
+        }
+    });
+
+
+
 //handling recipe button clicks 
 elements.recipe.addEventListener('click', e =>{
 
@@ -133,11 +169,12 @@ elements.recipe.addEventListener('click', e =>{
         state.recipe.updateServings("dec");
         recipeView.updateServingsIngr(state.recipe);
         }
-    }
-    if(e.target.matches(".btn-inc, .btn-inc *")){
+    }else if(e.target.matches(".btn-inc, .btn-inc *")){
         //inc btn is clicked 
         state.recipe.updateServings("inc");
         recipeView.updateServingsIngr(state.recipe);
+    }else if (e.target.matches(".recipe__btn--add, .recipe__btn--add *")){
+        controlList();
     }
         // console.log(state.recipe);
 });
