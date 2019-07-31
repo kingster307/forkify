@@ -119,7 +119,7 @@ const controlRecipe = async () => {
         
     }
 
-console.log(state.recipe);
+// console.log(state.recipe);
 
 
 
@@ -186,7 +186,7 @@ const controlLike = () => {
             state.recipe.author,
             state.recipe.img,
         );
-        console.log(state.likes);
+        // console.log(state.likes);
        
         //toggle the liked button 
         likesView.toggleLikeBtn(true);
@@ -199,7 +199,7 @@ const controlLike = () => {
     }else{
         // remove like to state
         state.likes.deleteLike(currentID);
-        console.log(state.likes);
+        // console.log(state.likes);
 
         //toggle the liked button 
         likesView.toggleLikeBtn(false);
