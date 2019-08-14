@@ -12,6 +12,7 @@
 	* advanced css
 	* css grid
 	* MVC architectural design
+	* persisting data with local storage
 
 ## Purpose 
 
