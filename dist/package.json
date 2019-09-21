@@ -1,0 +1,11 @@
+{
+  "name": "dist",
+  "version": "1.0.0",
+  "description": "This is a simple API project with custom webServer",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
